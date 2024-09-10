@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.min.css" />
+  </head>
+
+  <body>
+    <div class="dropdown text-center p-3 bg-dark">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Pārslēgt sagatavi
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li>
+          <a class="dropdown-item" href="statistika-sakums.html"
+            >Statistika - sākums</a
+          >
+        </li>
+        <li><a class="dropdown-item" href="statistika.html">Statistika</a></li>
+        <li><a class="dropdown-item" href="index.html">Uzdevumi</a></li>
+      </ul>
+    </div>
+
+    <div class="custom-navbar d-flex justify-content-start mb-3 bg-white p-3">
+      <div class="container">
+        <a href="statistika-sakums.html" class="btn btn-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M13 9V3h8v6zM3 13V3h8v10zm10 8V11h8v10zM3 21v-6h8v6z"
+            />
+          </svg>
+        </a>
+        <a href="statistika.html" class="btn btn-outline-secondary"
+          >DARBINIEKI</a
+        >
+        <button class="btn btn-outline-secondary">KLIENTI</button>
+        <button class="btn btn-outline-secondary">DOKUMENTI</button>
+        <button class="btn btn-outline-secondary">KVALITĀTE</button>
+      </div>
+    </div>
+
+    <div class="container mt-4">
+      <div class="row">
+        <!-- Card 1: Pie Chart -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Pie Chart</h5>
+              <div id="pieChart" style="height: 300px"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Line Chart -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Line Chart</h5>
+              <div id="lineChart" style="height: 300px"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Bar Chart -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Bar Chart</h5>
+              <div id="barChart" style="height: 300px"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Donut Chart -->
+        <div class="col-lg-6 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Donut Chart</h5>
+              <div id="donutChart" style="height: 300px"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Column Chart -->
+        <div class="col-lg-6 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Column Chart</h5>
+              <div id="columnChart" style="height: 300px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      // Load the Google Charts library
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawCharts);
+
+      function drawCharts() {
+        drawPieChart();
+        drawLineChart();
+        drawBarChart();
+        drawDonutChart();
+        drawColumnChart();
+      }
+
+      function drawPieChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Category", "Value"],
+          ["Category A", 45],
+          ["Category B", 26],
+          ["Category C", 12],
+          ["Category D", 17],
+        ]);
+
+        var options = {
+          title: "Pie Chart Example",
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(
+          document.getElementById("pieChart")
+        );
+        chart.draw(data, options);
+      }
+
+      function drawLineChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Month", "Value"],
+          ["January", 7],
+          ["February", 13],
+          ["March", 8],
+          ["April", 14],
+          ["May", 6],
+          ["June", 19],
+          ["July", 9],
+        ]);
+
+        var options = {
+          title: "Line Chart Example",
+          hAxis: { title: "Month" },
+          vAxis: { title: "Value" },
+        };
+
+        var chart = new google.visualization.LineChart(
+          document.getElementById("lineChart")
+        );
+        chart.draw(data, options);
+      }
+
+      function drawBarChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Element", "Density", { role: "style" }],
+          ["Copper", 8.94, "#b87333"],
+          ["Silver", 10.49, "silver"],
+          ["Gold", 19.3, "gold"],
+          ["Platinum", 21.45, "color: #e5e4e2"],
+        ]);
+
+        var options = {
+          title: "Bar Chart Example",
+          bar: { groupWidth: "75%" },
+          legend: { position: "none" },
+        };
+
+        var chart = new google.visualization.BarChart(
+          document.getElementById("barChart")
+        );
+        chart.draw(data, options);
+      }
+
+      function drawDonutChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Category", "Value"],
+          ["Category A", 45],
+          ["Category B", 26],
+          ["Category C", 12],
+          ["Category D", 17],
+        ]);
+
+        var options = {
+          title: "Donut Chart Example",
+          pieHole: 0.5,
+        };
+
+        var chart = new google.visualization.PieChart(
+          document.getElementById("donutChart")
+        );
+        chart.draw(data, options);
+      }
+
+      function drawColumnChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Month", "Sales"],
+          ["January", 1000],
+          ["February", 1170],
+          ["March", 660],
+          ["April", 1030],
+        ]);
+
+        var options = {
+          title: "Column Chart Example",
+          hAxis: { title: "Month" },
+          vAxis: { title: "Sales" },
+        };
+
+        var chart = new google.visualization.ColumnChart(
+          document.getElementById("columnChart")
+        );
+        chart.draw(data, options);
+      }
+    </script>
+  </body>
+</html>

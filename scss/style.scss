@@ -1,0 +1,219 @@
+@import "../bootstrap/scss/bootstrap";
+
+body {
+  background: #f8f9fa;
+}
+
+.custom-navbar {
+  border-bottom: 1px solid #dfdfdf;
+  .btn {
+    margin-right: 5px;
+
+    &.active {
+      background-color: #eaf6fb;
+      color: #000;
+    }
+
+    .badge {
+      background-color: darkgray;
+      color: #000;
+      margin-left: 10px;
+
+      &.my {
+        background-color: #1995ca;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.task-card {
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #dfdfdf;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  position: relative;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+
+  &.bg-primary {
+    color: #fff;
+  }
+
+  &.active,
+  &:hover {
+    background-color: #eaf6fb;
+  }
+
+  .number {
+    font-weight: bold;
+    font-size: 35px;
+  }
+
+  .subject {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .assigned {
+    background-color: #1995ca;
+    color: #fff;
+    padding: 0 10px;
+    line-height: 20px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    font-size: 11px;
+    white-space: nowrap;
+    transform: translate(-50%, 50%);
+  }
+
+  .attention {
+    background-color: #c00000;
+    margin-left: auto;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .connector {
+    width: 30px;
+    height: 2px;
+    background-color: #1995ca;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      transform: translate(8px, -9px);
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid #1995ca;
+    }
+  }
+}
+
+.task-table {
+  a {
+    color: #1995ca;
+  }
+}
+
+.form-select.selected {
+  border: 2px solid #1995ca;
+}
+
+.select2 {
+  &.active {
+    .select2-container--default,
+    .select2-selection--multiple {
+      border: 2px solid #1995ca;
+      .select2-selection__choice {
+        background-color: #1995ca;
+        color: #fff;
+        border: 1px solid #1995ca;
+        .select2-selection__choice__remove {
+          color: #fff;
+
+          line-height: 15px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+  padding-left: 6px;
+}
+
+/* Custom arrow for Select2 */
+.select2-container--default .select2-selection--multiple,
+.select2-container--default .select2-selection--single {
+  position: relative;
+  padding-right: 30px; /* Adjust padding to make space for the arrow */
+}
+
+.select2-container--default .select2-selection--multiple:after,
+.select2-container--default .select2-selection--single:after {
+  content: "\25BC"; /* Unicode for downward arrow */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888; /* Change color to match your design */
+  pointer-events: none; /* Prevent click events on the arrow */
+}
+
+.filtri {
+  label.form-label {
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+}
+
+.card {
+  &.number {
+    text-align: center;
+    cursor: pointer;
+    &.active,
+    &:hover {
+      background: #eaf6fb;
+    }
+
+    &.bg-primary {
+      color: #fff;
+    }
+    .value {
+      font-size: 30px;
+      font-weight: bold;
+
+      .changes {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        font-size: 12px;
+        font-weight: normal;
+        background-color: #fff;
+        padding: 2px 5px;
+        border-radius: 4px;
+        &.plus {
+          color: #19ca39;
+          &::before {
+            content: "▲";
+          }
+        }
+        &.minus {
+          color: #c00000;
+          &::before {
+            content: "▼";
+          }
+        }
+      }
+    }
+    .label {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+}

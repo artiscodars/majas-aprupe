@@ -1,0 +1,19 @@
+{
+  "html.format.maxPreserveNewLines": 1,
+  "saveAndRun": {
+    "commands": [
+      {
+        "match": "\\.scss$",
+        "cmd": "sass --no-source-map scss/style.scss style.min.css --style compressed"
+      },
+      {
+        "match": "\\.scss$",
+        "cmd": "sass --no-source-map scss/style.scss style.css"
+      }
+    ]
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[php]": {
+    "editor.defaultFormatter": "DEVSENSE.phptools-vscode"
+  }
+}
